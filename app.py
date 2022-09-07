@@ -22,7 +22,7 @@ app = Flask(__name__)
 @app.route('/predict', methods=['POST'])
 def predict_route():
     if request.method == 'POST':
-        prompt = request.json['prompt']
+        prompt = request.data['prompt']
         return jsonify(predict(prompt))
 
 if __name__ == '__main__':
