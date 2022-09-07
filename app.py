@@ -21,6 +21,9 @@ def predict(prompt):
 app = Flask(__name__)
 @app.route('/predict', methods=['POST'])
 def predict_route():
-    prompt = request.json['prompt']
-    return jsonify(predict(prompt))
+    if request.method == 'POST':
+        prompt = request.json['prompt']
+        return jsonify(predict(prompt))
 
+if __name__ == '__main__':
+    app.run()
